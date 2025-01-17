@@ -1,6 +1,5 @@
 {% set name = "tinytimer" %}
 {% set version = "0.0.0" %}
-{% set sha256 = "6ad13c8f01ab6094e58081a5367ffc4c5831f2d6b29034d2434d8ae106308fa5" %}
 
 package:
   name: {{ name|lower }}
@@ -8,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 6ad13c8f01ab6094e58081a5367ffc4c5831f2d6b29034d2434d8ae106308fa5
 
 build:
-  noarch: python
   number: 1
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
@@ -35,7 +34,7 @@ about:
   license: Apache-2.0
   summary: 'Tiny Python benchmarking library'
   license_family: Apache
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE'
+  license_file: LICENSE
 
 extra:
   recipe-maintainers:
